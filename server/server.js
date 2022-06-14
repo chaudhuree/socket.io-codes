@@ -12,4 +12,10 @@ io.on('connection', socket => {
     console.log(num, str, obj);
   }
   );
+
+  // received message from client
+  socket.on('send-message', (message) => {
+    console.log(message);
+    }
+  );
 })

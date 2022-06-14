@@ -9,8 +9,9 @@ const socket = io('http://localhost:3000');
 socket.on('connect', () => {
   displayMessage("Connected to server with id: " + socket.id)
 })
+
 // send data from client
-socket.emit('client-data', 'a', 1, { a: 2, c: 3 })
+// socket.emit('client-data', 'a', 1, { a: 2, c: 3 })
 
 
 
@@ -20,6 +21,8 @@ form.addEventListener("submit", e => {
   const message = messageInput.value
   const room = roomInput.value
   if (message === "") return
+  // send message to server
+  socket.emit("send-message",  message)
   displayMessage(message)
   messageInput.value = ""
 })
