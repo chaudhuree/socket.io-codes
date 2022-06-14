@@ -13,7 +13,7 @@ socket.on('connect', () => {
 // send data from client
 // socket.emit('client-data', 'a', 1, { a: 2, c: 3 })
 
-
+socket.on('received-message', (message)=> displayMessage(message))
 
 // form functionality
 form.addEventListener("submit", e => {
