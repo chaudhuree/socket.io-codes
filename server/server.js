@@ -1,10 +1,15 @@
-const io=require('socket.io')(3000,{
-  cors:{
-    origin:['http://localhost:8080'],
+const io = require('socket.io')(3000, {
+  cors: {
+    origin: ['http://localhost:8080'],
   }
 });
 
-io.on('connect', socket=>{
-    console.log('user connected');
-    console.log(socket.id);
+io.on('connection', socket => {
+  console.log(socket.id);
+
+  // receive client data
+  socket.on('client-data', (num, str, obj) => {
+    console.log(num, str, obj);
+  }
+  );
 })
