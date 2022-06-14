@@ -8,10 +8,10 @@ io.on('connection', socket => {
   console.log(socket.id);
 
   // receive client data
-  socket.on('client-data', (num, str, obj) => {
-    console.log(num, str, obj);
-  }
-  );
+  // socket.on('client-data', (num, str, obj) => {
+  //   console.log(num, str, obj);
+  // }
+  // );
 
   // received message from client
   socket.on('send-message', (message, room) => {
@@ -21,6 +21,11 @@ io.on('connection', socket => {
     } else {
       socket.to(room).emit('received-message', message);
     }
+  }
+  );
+
+  socket.on('join-room', room => {
+    socket.join(room);
   }
   );
 })

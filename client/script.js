@@ -27,12 +27,16 @@ form.addEventListener("submit", e => {
   displayMessage(message)
   messageInput.value = ""
 })
+
+// join room functionality
 joinRoomButton.addEventListener("click", () => {
   const room = roomInput.value
+  socket.emit("join-room", room)
 })
+
+// display message on screen
 function displayMessage(message) {
   const div = document.createElement("div")
-
   div.textContent = message
   document.getElementById("message-container").append(div)
 }
