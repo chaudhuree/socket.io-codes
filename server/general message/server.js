@@ -14,13 +14,12 @@ io.on('connection', socket => {
   );
 
   // received message from client
-  socket.on('send-message', (message, room) => {
+  socket.on('send-message', (message) => {
     console.log(message);
-    if (room === "") {
-      socket.broadcast.emit('received-message', message);
-    } else {
-      socket.to(room).emit('received-message', message);
+    // io.emit('received-message', message);
+    
+    // send message everyone except the sender
+    socket.broadcast.emit('received-message', message);
     }
-  }
   );
 })

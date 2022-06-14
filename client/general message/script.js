@@ -23,7 +23,7 @@ form.addEventListener("submit", e => {
   const room = roomInput.value
   if (message === "") return
   // send message to server
-  socket.emit("send-message", message,room)
+  socket.emit("send-message", message)
   displayMessage(message)
   messageInput.value = ""
 })
